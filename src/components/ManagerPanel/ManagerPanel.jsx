@@ -44,15 +44,15 @@ export default function ManagerPanel({
               : c.status,
     resolutionNote: c.managerNote || "",
     date: new Date(c.createdAt).toLocaleDateString("et-ET"),
-    audio: c.audio ? `http://localhost:5000/uploads/complaints/${c.audio}` : null,
-    video: c.video ? `http://localhost:5000/uploads/complaints/${c.video}` : null,
+    audio: c.audio ? `https://akaki-backend-1.onrender.com/uploads/complaints/${c.audio}` : null,
+    video: c.video ? `https://akaki-backend-1.onrender.com/uploads/complaints/${c.video}` : null,
     files: c.files && c.files.length > 0 ? `http://localhost:5000/uploads/complaints/${c.files[0]}` : null,
   }));
 
   const formattedBlockedUsers = (blockedUsers || []).map((u) => ({
     ...u,
     id: u._id,
-    blockLetter: u.attachedFile ? `http://localhost:5000${u.attachedFile}` : null,
+    blockLetter: u.attachedFile ? `https://akaki-backend-1.onrender.com${u.attachedFile}` : null,
   }));
 
   const counts = {
