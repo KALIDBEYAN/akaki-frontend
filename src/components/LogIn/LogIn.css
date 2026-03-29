@@ -1,0 +1,191 @@
+/* =========================================
+           LOGIN STYLING
+   ========================================= */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  background: radial-gradient(circle at top right, #f8fafc, #e2e8f0);
+  font-family: 'Inter', sans-serif;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  background: #ffffff;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(1, 51, 53, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  animation: entrance 0.7s ease-out;
+  position: relative;
+}
+
+/* 🌟 አነስ ያለ ግን ማራኪ ሄደር */
+.login-header-wrapper {
+  background: linear-gradient(135deg, #01282a 0%, #013335 40%, #0c617d 100%);
+  position: relative;
+  padding: 45px 20px 55px 20px; /* Padding ቀንሷል */
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-glow {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 100px;
+  height: 100px;
+  background: rgba(41, 241, 211, 0.15);
+  filter: blur(30px);
+  border-radius: 50%;
+  animation: glowMove 6s infinite alternate;
+}
+
+.login-header-wrapper h2 {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 850;
+  letter-spacing: -1px;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.subtitle {
+  color: rgba(255, 255, 255, 0.85);
+  margin: 8px 0 0 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+
+/* 🌊 አነስ ያለ የሞገድ ቅርጽ */
+.wave-shape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px; /* ቁመቱ ቀንሷል */
+  background: #ffffff;
+  clip-path: polygon(0 100%, 100% 100%, 100% 40%, 0 0);
+  border-top-left-radius: 100% 80%;
+}
+
+/* ፎርም ይዘት */
+.login-form {
+  padding: 15px 35px 40px 35px;
+  margin-top: -10px;
+  position: relative;
+  z-index: 3;
+}
+
+.input-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.input-pass {
+  margin-bottom: 20px;
+  text-align: left;
+}
+.input-pass label {
+  display: block;
+  font-weight: 700;
+  color: #00292c;
+  margin-bottom: 7px;
+  font-size: 0.85rem;
+}
+
+.input-group label {
+  display: block;
+  font-weight: 700;
+  color: #00292c;
+  margin-bottom: 7px;
+  font-size: 0.85rem;
+}
+
+/* 🌟 የመፃፊያ ሳጥኖች (Register style) */
+.input-group input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e2e8f0 !important;
+  border: 2px solid #77c1d854;
+  box-shadow: 0 20px 45px rgba(119, 153, 153, 0.119);
+  background: #fdfdfd;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.input-pass input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e2e8f0;
+  border: 2px solid #77c1d854;
+  box-shadow: 0 20px 45px rgba(119, 153, 153, 0.185);
+  background: #fdfdfd;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+  box-sizing: border-box;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.input-group input:hover,
+.input-group input:focus {
+  outline: none;
+  border-color: #0c617d ;
+  background: #ffffff ;
+  box-shadow: 0 0 0 4px rgba(1, 37, 49, 0.1);
+  transform: translateY(-2px);
+}
+.input-pass input:hover,
+.input-pass input:focus {
+  outline: none;
+  border-color: #0c617d ;
+  background: #ffffff ;
+  box-shadow: 0 0 0 4px rgba(1, 37, 49, 0.1);
+  transform: translateY(-2px);
+}
+/* Button */
+.login-btn {
+  width: 100%;
+  height: 52px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #013335, #0c617d);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(1, 51, 53, 0.3);
+  transition: 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.1);
+  box-shadow: 0 12px 25px rgba(1, 51, 53, 0.4);
+}
+
+/* Animations */
+@keyframes entrance {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowMove {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-40px, 20px); }
+}

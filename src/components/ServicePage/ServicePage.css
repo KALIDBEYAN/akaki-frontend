@@ -1,0 +1,326 @@
+/* 1. GLOBAL PAGE SETTINGS */
+
+.page-container {
+  max-width: 1280px;
+  margin: 25px auto;
+  padding: clamp(15px, 3vw, 40px);
+  min-height: 92vh;
+   background: linear-gradient(135deg, #f0f9ff 0%, #68ede240 100%);
+  border-radius: 40px;
+  box-shadow: 0 25px 50px -12px rgba(230, 6, 6, 0.08);
+  position: relative;
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+/* ይህንን App.css ውስጥ ጨምረው */
+b {
+   font-size: 1.1rem;
+  font-weight: 1000 !important;
+  color: #540505 !important;
+}
+/* Background Glow Decorations */
+.page-container::before, .page-container::after {
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(12, 97, 125, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+.page-container::before { top: -200px; right: -150px; }
+.page-container::after { bottom: -200px; left: -150px; }
+
+/* 2. HEADER SECTION */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 40px;
+  border-radius: 26px;
+  background: linear-gradient(135deg, #013335 0%, #0c617d 100%);
+  box-shadow: 0 12px 30px rgba(1, 51, 53, 0.2);
+  margin-bottom: 40px;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+/* Shine Animation */
+.header::after {
+  content: "";
+  position: absolute;
+  width: 160%;
+  height: 100%;
+  top: 0;
+  left: -60%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  animation: header-shine 7s infinite linear;
+}
+
+@keyframes header-shine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.header-title {
+  color: #ffffff;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* 3. LANGUAGE SELECTOR */
+.lang-selector {
+  display: flex;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.12);
+  padding: 5px;
+  border-radius: 100px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.lang-btn {
+  border: none;
+  padding: 9px 24px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.85rem;
+  background: transparent;
+  color: #ffffff;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.lang-btn.active {
+  background: #ffffff;
+  color: #013335;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: scale(1.02);
+}
+
+/* 4. MAIN CONTENT LAYOUT */
+.main-layout {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  gap: 40px;
+  align-items: start;
+  position: relative;
+  z-index: 5;
+}
+
+/* 5. SIDEBAR (Desktop) */
+.desktop-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: sticky;
+  top: 30px;
+}
+
+.sidebar-item {
+  padding: 18px 26px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  font-weight: 700;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-item:hover {
+  transform: translateX(10px);
+  background: #ffffff;
+  border-color: #0c617d;
+  color: #0c617d;
+}
+
+.sidebar-item.active {
+  background: #0c617d;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 10px 25px rgba(12, 97, 125, 0.25);
+}
+
+/* 6. INFO AREA (The Main Card) */
+.info-area {
+  background: #ffffff;
+  padding: clamp(30px, 5vw, 55px);
+  border-radius: 35px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  border-top: 10px solid #0c617d;
+  animation: content-slide-up 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes content-slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.info-title {
+  font-size: 2.3rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 8px;
+  letter-spacing: -0.03em;
+}
+
+.office-name {
+  color: #013b38;
+  font-weight: 900;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
+  margin-left: 10px;
+  display: block;
+}
+
+/* 7. SECTIONS & LISTS */
+.section {
+  margin-bottom: 45px;
+}
+
+.section-header {
+  font-weight: 800;
+  font-size: 1.25rem;
+  margin-bottom: 25px;
+  color: #1e293b;
+  position: relative;
+  padding-left: 20px;
+}
+
+.section-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 24px;
+  width: 6px;
+  background: #0c617d;
+  border-radius: 10px;
+}
+
+.list-item {
+  background: #f8fafc;
+  border-radius: 18px;
+  margin-bottom: 14px;
+  border-left: 6px solid #10b981;
+  font-weight: 600;
+  color: #334155;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s ease;
+}
+
+.list-item:hover {
+  transform: scale(1.015) translateX(5px);
+  background: #f1f5f9;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+}
+
+.check-icon {
+  color: #10b981;
+  font-size: 1.4rem;
+  background: rgba(16, 185, 129, 0.1);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* 8. NOTICE BOX */
+.notice-box {
+  margin-top: 50px;
+  padding: 35px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #fffbeb, #fef3c7);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-left: 10px solid #f59e0b;
+}
+
+.notice-header {
+  font-weight: 900;
+  color: #92400e;
+  margin-bottom: 18px;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.notice-list {
+  margin: 0;
+  padding-left: 22px;
+  color: #b45309;
+  line-height: 1.9;
+  font-weight: 600;
+}
+
+/* 9. MOBILE SELECTOR */
+.mobile-selector {
+  display: none;
+  margin-bottom: 30px;
+}
+
+.service-select {
+  width: 100%;
+  padding: 20px;
+  border-radius: 20px;
+  border: 2px solid #e2e8f0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #0f172a;
+  background: #ffffff;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none;
+  
+}
+
+.service-select:focus {
+  border-color: #0c617d;
+  box-shadow: 0 0 0 4px rgba(12, 97, 125, 0.1);
+}
+
+/* 10. MEDIA QUERIES */
+@media (max-width: 1024px) {
+  .main-layout {
+    grid-template-columns: 1fr;
+  }
+  .desktop-sidebar { display: none; }
+  .mobile-selector { display: block; }
+  .page-container { margin: 15px; border-radius: 30px; }
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    padding: 25px;
+    gap: 20px;
+    text-align: center;
+  }
+  .info-area { padding: 30px 20px; }
+  .info-title { font-size: 1.8rem; }
+  .list-item { padding: 15px; font-size: 0.95rem; }
+}
+
+/* 11. PRINT STYLES */
+@media print {
+  .header, .desktop-sidebar, .mobile-selector, .lang-selector { display: none !important; }
+  .page-container { background: white; box-shadow: none; margin: 0; padding: 0; border: none; }
+  .info-area { border: 1px solid #ddd; box-shadow: none; }
+}

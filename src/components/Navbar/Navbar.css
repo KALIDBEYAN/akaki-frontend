@@ -1,0 +1,505 @@
+/* ===============================
+    🌍 GLOBAL RESET
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  background: linear-gradient(to bottom, #f8fafc, #e2e8f0);
+  color: #1e3a8a;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===============================
+    HEADER NAVBAR
+================================ */
+.top-nav {
+  width: 100%;
+  background: linear-gradient(135deg, #013335, #0c617d);
+  color: white;
+  padding: clamp(20px, 4vw, 35px) 20px;
+  position: relative;
+  border: 1px solid rgb(52, 187, 240);
+  box-shadow: 0px 5px 5px rgba(5, 181, 166, 0.495);
+  backdrop-filter: blur(10px);
+  animation: fadeSlideDown 0.8s ease forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===============================
+    TITLE SECTION
+================================ */
+.nav-title-section {
+  text-align: center;
+  width: 100%;
+  padding: 0 clamp(80px, 15vw, 250px);
+  padding-left: 95px; 
+}
+
+.main-title {
+  font-size: clamp(1.1rem, 2.2vw, 1.9rem);
+  font-weight: 700;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(41, 241, 211, 0.8);
+  line-height: 1.3;
+}
+
+.sub-title {
+ font-size: clamp(1rem, 1.5vw, 1.5rem);
+  font-weight: 400;
+  opacity: .9;
+  text-shadow: 0 0 10px rgba(41, 241, 211, 0.8);
+}
+
+/* ===============================
+    👤 USER ROLE TAG (Admin, Expert, etc.)
+================================ */
+.user-role-tag {
+  position: absolute;
+  margin-top: 5px;
+  text-align: center;
+  width:auto;
+  background: rgba(1, 47, 47, 0.7); /* የጠቆረ ዳራ ጽሁፉ እንዲታይ */
+  color: #f0f0f0; /* የሰዓቱ አይነት ደመቅ ያለ ከለር */
+  font-size: 0.7rem;
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-transform: uppercase; /* ስሙን በካፒታል ያደርገዋል */
+  letter-spacing: 1px;
+  border: 1px solid rgba(41, 241, 211, 0.4);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 0 15px rgba(41, 241, 211, 0.2);
+  pointer-events: none; /* በተን ካልሆነ እንዳይነካ */
+  z-index: 10;
+  animation: roleGlow 3s infinite ease-in-out;
+}
+
+/* ለታጉ ትንሽ የብርሃን አኒሜሽን */
+@keyframes roleGlow {
+  0% { border-color: rgba(41, 241, 211, 0.4); box-shadow: 0 0 5px rgba(41, 241, 211, 0.2); }
+  50% { border-color: rgba(41, 241, 211, 0.9); box-shadow: 0 0 15px rgba(41, 241, 211, 0.5); }
+  100% { border-color: rgba(41, 241, 211, 0.4); box-shadow: 0 0 5px rgba(41, 241, 211, 0.2); }
+}
+
+/* ===============================
+    MOBILE ADJUSTMENT
+================================ */
+@media (max-width: 768px) {
+  .user-role-tag {
+    right: 15px; /* በቀኝ ጥግ */
+    bottom: 10px; /* ከታች ጥግ */
+    font-size: 0.7rem;
+    padding: 4px 12px;
+    background: rgba(1, 47, 47, 0.9); /* በስልክ ይበልጥ እንዲጎላ */
+  }
+}
+
+/* ===============================
+    LOGO
+================================ */
+.logo-container {
+  position: absolute;
+  left: clamp(20px, 4vw, 40px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.nav-logo {
+  width: clamp(55px, 6vw, 85px);
+  height: clamp(55px, 6vw, 85px);
+  border-radius: 50%;
+  border: 3px solid rgba(123, 188, 196, 0.6);
+  box-shadow: 0 10px 30px rgba(5, 135, 124, 0.447);
+  object-fit: cover;
+}
+
+/* ===============================
+    CLOCK
+================================ */
+.top-clock {
+  position: absolute;
+  right: clamp(7px, 4vw, 30px);
+  top: 33px;
+  font-family: monospace;
+  background: rgb(1, 47, 47);
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: clamp(0.9rem, 1vw, 1.3rem);
+  text-shadow: 0 0 10px rgba(41, 241, 211, 0.8);
+  backdrop-filter: blur(5px);
+  animation: loginGlow 3s infinite ease-in-out;
+  white-space: nowrap;
+}
+
+@keyframes loginGlow { 
+  0% { box-shadow: 0 0 0 rgba(255,255,255,0.3); }
+  50% { box-shadow: 0 0 25px rgba(255,255,255,0.7); }
+  100% { box-shadow: 0 0 0 rgba(255,255,255,0.3); }
+}
+
+/* ===============================
+    NAV MENU
+================================ */
+.main-menu {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 18px;
+  border: 1px solid rgb(4, 132, 134);
+  box-shadow: 10px 5px 5px rgba(194, 238, 234, 0.66);
+}
+
+.nav-link {
+  background: #f1f5f9;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: .95rem;
+  color: #1e3a8a;
+  cursor: pointer;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+/* SHINE EFFECT */
+.nav-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(255,255,255,0.2),
+    rgba(255,255,255,0.7),
+    rgba(255,255,255,0.2)
+  );
+  transform: skewX(-20deg);
+}
+
+.nav-link:hover::before {
+  left: 130%;
+  transition: 0.8s;
+}
+
+.nav-link:hover {
+  background: #2563eb;
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(7, 106, 152, 0.45);
+}
+
+.nav-link.active {
+  background: #014647;
+  color: white;
+  box-shadow: 0 0 25px rgba(37,99,235,0.6);
+}
+
+/* ===============================
+    MENU TOGGLE (☰)
+================================ */
+.menu-toggle {
+  display: none;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+  font-size: 32px;
+  color: white;
+  cursor: pointer;
+}
+
+/* ===============================
+    LOGIN / LOGOUT
+================================ */
+.login-btn-nav, .logout-btn-nav {
+  position: absolute;
+  right: 50px;
+  bottom: 12px;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  border: 1px solid rgb(168, 208, 227);
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 0 rgba(33, 184, 239, 0.349); }
+  50% { box-shadow: 0 0 25px rgba(255,255,255,0.7); }
+  100% { box-shadow: 0 0 0 rgba(1, 189, 223, 0.3); }
+}
+
+.login-btn-nav { background: linear-gradient(#2575fc, #6a11cb); color: #fff; }
+.logout-btn-nav { background: rgba(113, 2, 2, 0.742); color: #fff; }
+
+/* ===============================
+    MOBILE RESPONSIVE
+================================ */
+@media(max-width: 768px) {
+  .top-nav {
+    padding: 30px 15px;
+    gap: 15px; 
+  }
+
+  .logo-container {
+    position: static;
+    transform: none;
+    margin: 0 auto;
+  }
+
+  .nav-title-section {
+    position: static;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .top-clock {
+    position: static;
+    margin: 0 auto;
+    width: fit-content;
+  }
+
+  .login-btn-nav, .logout-btn-nav {
+    position: static;
+    margin: 9px auto;
+    display: block;
+    width: fit-content;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+   
+  .main-menu {
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    padding: 0;
+  }
+  .main-menu.open {
+    max-height: 800px;
+    padding: 15px;
+  }
+  .nav-link { width: 100%; text-align: center; }
+}
+/* ===============================
+    769px - 774px (The Gap Filler)
+================================ */
+@media(min-width: 769px) and (max-width: 780px) {
+  .top-nav {
+    min-height: 160px;
+    padding: 20px;
+  }
+
+  .main-title {
+    font-size: 1.7 rem; /* መጠኑ እንዳይበዛና እንዳያንስ ሚዛናዊ */
+    padding-right: 40px;
+    text-align: center;
+  }
+
+  .sub-title {
+    font-size: 0.9rem;
+    padding-left: 0;
+    text-align: center;
+  }
+
+  /* ሎጎውን እና ሰዓቱን ወደ ቦታቸው መመለስ */
+  .logo-container {
+    left: 20px;
+    top: 50%;
+  }
+
+  .top-clock {
+    right: 20px;
+    top: 45px;
+    font-size: 0.85rem;
+  }
+   .login-btn-nav, .logout-btn-nav{
+    bottom: 25px;
+    right: 35px;
+  }
+  /* Role Tag መሃል ላይ እንዲሆን */
+  .user-role-tag {
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* ሜኑው እዚህ ጋር መስመር መያዝ አለበት */
+   .nav-link { padding: 10px 20px; font-size: 0.9rem; min-width: fit-content; }
+   .main-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px;
+  
+}
+}
+
+@media(min-width: 781px) and (max-width: 880px){
+    .nav-link { padding: 10px 20px; font-size: 0.9rem; min-width: fit-content; }
+   .main-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px;
+  
+}
+ .user-role-tag {
+    bottom: 10px;
+    right: 400px;
+   
+  }
+  .login-btn-nav, .logout-btn-nav{
+    bottom: 20px;
+    right: 45px;
+  }
+   .main-title {
+     
+    padding-right: 40px;
+    text-align: center;
+  }
+
+  .sub-title {
+    
+    padding-right: 40px;
+    text-align: center;
+  }
+}
+ 
+@media(min-width:881px) and (max-width:1024px) {
+  .main-menu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 20px 40px;
+    gap: 15px;
+  }
+  .nav-link { padding: 10px 20px; font-size: 0.9rem; min-width: fit-content; }
+   .main-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px;
+  
+}
+  .main-title { font-size: 1.37rem;padding-right:60px ; }
+   .sub-title {
+    font-size: 1 rem;
+    padding-right:60px;
+  }
+  .logo-container { left: 20px; }
+  .top-clock { right: 20px; }
+   .login-btn-nav, .logout-btn-nav{
+    bottom: 20px;
+    right: 35px;
+  }
+  .user-role-tag{
+    bottom: 10px;
+    left: 370px;
+  }
+}
+
+@media(min-width:1025px) {
+  .main-menu {
+    flex-wrap: nowrap;
+    justify-content: center;
+
+    padding: 15px 20px;
+    gap: 12px;
+    
+  }
+  .nav-link { padding: 10px 20px; font-size: 0.9rem; min-width: fit-content; }
+   .main-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px;
+  
+}
+ .login-btn-nav, .logout-btn-nav{
+    bottom: 20px;
+    right: 45px;
+  }
+  .user-role-tag{
+    bottom: 10px;
+    left: 530px;
+  }
+}
+
+@media(min-width: 1200px) {
+  .main-menu { padding: 15px 15%; }
+
+  
+  .main-title {
+    font-size: 1.7rem;
+    padding-left: 100px;
+    letter-spacing: 2px;
+  }
+  
+  .sub-title {
+    font-size: 1.2rem;
+    padding-left: 100px;
+  }
+  .top-clock{
+    top: 50px;
+  }
+  .login-btn-nav, .logout-btn-nav{
+    bottom: 40px;
+    right: 45px;
+  }
+  .user-role-tag{
+    bottom: 10px;
+    left: 590px;
+  }
+  .main-menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  padding: 8px;
+  
+}
+  
+  /* የናቭባሩን ቁመት ለጽሁፉ እንዲመጥን ከፍ ማድረግ */
+  .top-nav {
+    min-height: 180px;
+  }
+}

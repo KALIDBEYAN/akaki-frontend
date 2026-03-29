@@ -1,0 +1,468 @@
+/* =================================================
+   👑  ADMIN PANEL - COMPLETE SCROLLABLE CSS
+   ================================================= */
+
+/* 1. GLOBAL SETTINGS & CONTAINER */
+.admin-container {
+  padding: clamp(10px, 3vw, 25px);
+  background: linear-gradient(135deg, #fcf8f8 0%, #e2e8f0 100%);
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+  color: #1e293b;
+}
+
+/* Read-only mode for safety */
+.read-only-mode {
+  position: relative;
+  opacity: 0.95;
+}
+
+/* 2. STATS CARDS - AUTO GRID */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+  pointer-events: auto !important;
+}
+
+.stat-card {
+  background: #ffffff;
+  padding: 20px 15px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  border-bottom: 4px solid #013141;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+/* የካርዶቹ የጎን መስመር ቀለሞች */
+.stat-card:nth-child(1) { border-left: 6px solid #dbf741; }
+.stat-card:nth-child(2) { border-left: 6px solid #5339f8; }
+.stat-card:nth-child(3) { border-left: 6px solid #f5d20b; }
+.stat-card:nth-child(4) { border-left: 6px solid #37fe44; }
+.stat-card:nth-child(5) { border-left: 6px solid #f65cdf; }
+.stat-card:nth-child(6) { border-left: 6px solid #d45106; }
+
+.stat-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 30px rgba(21, 156, 161, 0.466);
+}
+
+.active-filter {
+  background: #240000 !important;
+  border-bottom-color: #0bfdd9 !important;
+}
+
+.active-filter h2, .active-filter small {
+  color: #ffffff !important;
+}
+
+.stat-card small {
+  color: #011b3a;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.stat-card h2 {
+  margin: 8px 0 0 0;
+  color: #3c0101;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 900;
+}
+.file-table-container{
+  min-height: 100vh;
+ 
+}
+/* 3. SEARCH & EXPORT BAR */
+.search-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-left: 10px;
+  align-items: center;
+  justify-content: space-between;
+  background: #ffffff;
+  padding: clamp(15px, 3vw, 25px);
+  border-radius: 16px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 1000;
+}
+
+.search-input {
+  flex: 1;
+  min-width: clamp(200px, 50%, 400px);
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 2px solid #04aeb4;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+  box-shadow: 0 4px 6px -1px rgba(4, 167, 162, 0.352);
+}
+
+/* 4. EXPORT WRAPPER & DROPDOWN - SCROLLABLE */
+.export-wrapper {
+  position: relative;
+  display: inline-block;
+  pointer-events: auto !important;
+}
+
+.export-toggle-btn {
+  background-color: #fdfdfd;
+  color: rgb(1, 44, 45);
+  box-shadow: 0 4px 6px -1px rgba(4, 167, 162, 0.352);
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  border: 2px solid #02585b30;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.export-toggle-btn:hover {
+  background-color: #004360fb;
+  color: white;
+}
+
+.export-dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: white;
+  border: 2px solid #02455a;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  z-index: 10000 !important;
+  border-radius: 12px;
+  width: 320px;
+  
+  /* ሜኑው በራሱ ስክሮል እንዲኖረው */
+  max-height: 450px;
+  overflow-y: auto;
+  pointer-events: auto !important;
+}
+
+.filter-title { 
+  font-weight: bold; 
+  margin-bottom: 12px; 
+  color: #014848; 
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+.preset-row { 
+  display: flex; 
+  gap: 8px; 
+  margin-bottom: 15px; 
+}
+
+.preset-row button { 
+  flex: 1; 
+  padding: 7px; 
+  font-size: 12px; 
+  cursor: pointer; 
+  background: #f9f1f1; 
+  border: 1px solid #cbd5e1; 
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.date-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #f8fafc;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.date-inputs input[type="date"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.export-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.export-actions button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.export-actions button:nth-child(1) { background: #16a34a; } /* Excel */
+.export-actions button:nth-child(2) { background: #2563eb; } /* Word */
+.export-actions button:nth-child(3) { background: #475569; } /* Print */
+
+/* 5. TABLE STYLING - SCROLL SOLUTION */
+.file-table-container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 20px 25px -5px rgba(1, 141, 141, 0.785);
+  
+  /* እንዲቆረጥ ሳይሆን ስክሮል እንዲመጣ */
+  overflow: auto !important; 
+  max-height: 80vh; 
+  position: relative;
+  z-index: 1;
+}
+
+#admin-table-to-export {
+  margin: 10px;
+ 
+  min-width: 100%;
+  padding-bottom: 120px; /* ሜኑው ሲከፈት እንዳይሸፈን ትርፍ ቦታ */
+}
+
+table {
+  width: 100%;
+  margin: 10px;
+  border-collapse: collapse;
+  min-width: 950px;
+}
+
+th {
+  background: #013335;
+  color: #ffffff;
+  padding: 18px 15px;
+  font-size: 0.85rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: left;
+  /* ስክሮል ሲደረግ ሄደሩ እንዳይጠፋ */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.filter-th{
+  position: sticky ;
+  top: 0;
+  z-index: 10;
+}
+
+td {
+  padding: 16px 15px;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.9rem;
+  color: #1e293b;
+}
+.blacklist-admin-section h4{
+ text-align: center;
+ font-weight: 700;
+ font-size: 1.5rem;
+}
+tr:hover { background-color: #f8fafc; }
+
+/* 6. STATUS BADGES */
+.status-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.status-requested { background: #0509ee; }
+.status-sent { background: #035be8; }
+.status-received { background: #4e0cea; }
+.status-returned { background: #f49d05; }
+.status-fix { background: #ef3232; }
+.status-verified { background: #018d5e; }
+
+/* 7. ACTION BUTTONS */
+.action-buttons { display: flex; gap: 8px; }
+
+.action-buttons button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #fff;
+}
+
+.back-buttons { background: #0ea5e9; }
+.assign-buttons { background: #f43f5e; }
+.check-buttons { background: #10b981; }
+
+/* 8. NO DATA MESSAGE */
+.no-data-msg {
+  text-align: center;
+  padding: 80px 50px;
+  color: #64748b;
+  font-style: italic;
+  background: #fafafa;
+}
+
+.count-badge {
+  font-size: 14px;
+  background: #014848;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-left: 8px;
+}
+
+/* 9. RESPONSIVE OPTIMIZATIONS */
+@media (max-width: 768px) {
+  .admin-stats { grid-template-columns: 1fr 1fr; }
+  .search-container { flex-direction: column; align-items: stretch; }
+  .export-dropdown { width: 280px; right: auto; left: 0; }
+}
+
+/* 10. PRINT LOGIC */
+@media print {
+  .no-print, .action-buttons, .export-wrapper, .search-container {
+    display: none !important;
+  }
+  .admin-container { padding: 0; background: white; }
+  table { border: 1px solid #ddd; min-width: 100%; }
+  th { background: #f1f1f1 !important; color: black !important; }
+}
+
+/* =================================================
+   🔍 EXCEL-STYLE COLUMN FILTER STYLES 
+   ================================================= */
+
+/* የሰንጠረዡ ሄደር ለማጣሪያ እንዲመች */
+.filter-th {
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  padding-right: 25px !important; /* ለአዶው ቦታ */
+  user-select: none;
+}
+
+.filter-th:hover {
+  background: #024d50 !important;
+  color: #00ffcc !important;
+}
+
+/* ማጣሪያው ሲከፈት የሚመጣው ፖፕ-አፕ (Popup) */
+.excel-filter-popup {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #ffffff;
+  
+  min-width: 200px;
+  max-width: 280px;
+  border-radius: 12px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border: 1px solid #e2e8f0;
+  z-index: 10000;
+  padding: 12px;
+  margin-top: 8px;
+  animation: fadeInDown 0.2s ease-out;
+}
+
+/* የፖፕ-አፕ ሄደር (Sort Button) */
+.filter-header {
+  border-bottom: 1.5px solid #f1f5f9;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+
+.filter-header button {
+  width: 100%;
+  padding: 8px;
+  background: #013335;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-header button:hover {
+  background: #02666a;
+  transform: translateY(-1px);
+}
+
+/* የቼክቦክስ ዝርዝር (List) */
+.filter-options-list {
+  max-height: 200px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding-right: 5px;
+}
+
+/* ስክሮልባሩን ውብ ማድረግ */
+.filter-options-list::-webkit-scrollbar {
+  width: 5px;
+}
+.filter-options-list::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+/* ነጠላ ቼክቦክስ ስታይል */
+.filter-options-list label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #334155;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.filter-options-list label:hover {
+  background: #f8fafc;
+}
+
+.filter-options-list input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #013335; /* የቼክቦክስ ቀለም */
+  cursor: pointer;
+}
+
+/* አኒሜሽን */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* የተመረጠ ሮው (Selected Row) ጎልቶ እንዲታይ */
+.selected-row {
+  background-color: #f0f9ff !important;
+  border-left: 4px solid #0ea5e9;
+}
+
+/* ሄደሩ ላይ ያለው የሶርት ምልክት (Icons) */
+.filter-th::after {
+  content: ' ▾';
+  font-size: 10px;
+  opacity: 0.6;
+}

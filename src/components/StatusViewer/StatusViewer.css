@@ -1,0 +1,431 @@
+/* =========================================
+    📦 COMPACT & SLEEK STATUS CARDS
+   ========================================= */
+
+.status-container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.status-header {
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #001012;
+  margin-bottom: 25px;
+}
+
+/* ካርዶቹ በትንሹ ተቀራርበው እንዲቀመጡ (Grid) */
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); 
+  gap: 15px;
+}
+
+/* ትናንሽ ካርዶች */
+.status-card {
+  margin-top: 40px;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 12px rgba(1, 90, 87, 0.984);
+  transition: all 0.3s ease;
+  position: relative;
+  
+  /* --- 🆕 የግራ መስመር (Border Left) ማስተካከያ --- */
+  border-left-width: 10px;    /* መስመሩ ጎልቶ እንዲታይ 10px ወፍሯል */
+  border-left-style: solid;   /* መስመሩ ሙሉ እንዲሆን */
+  overflow: hidden;           /* የግራ መስመሩ ከጥሩዙ (Radius) ጋር እንዲታጠፍ */
+  display: flex;
+  flex-direction: column;
+}
+
+.status-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(1, 26, 95, 0.388);
+  border-color: #01426b;
+}
+
+.status-card h4 {
+  margin: 0 0 8px 0;
+  color: #001010;
+  font-size: 1rem;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-card p {
+  margin: 4px 0;
+  font-size: 1rem;
+  color: #000607;
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+}
+
+.status-card p b {
+  color: #000000;
+  font-weight: 800;
+}
+
+/* --- 🆕 አዲስ የተጨመሩ ስታይሎች (ለአስተካክል እና ለኮሜንት) --- */
+
+.action-row, .rejection-row {
+  display: flex;
+  flex-direction: row; /* 👈 ጎን ለጎን እንዲሆኑ ያደርጋል */
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+  padding: 8px;
+  background: #fff5f5; /* ለስላሳ ቀይ ዳራ */
+  border-radius: 8px;
+  border: 1px solid #fed7d7;
+}
+
+.inline-comment, .rejection-comment-box {
+  flex: 1; /* 👈 ኮሜንቱ ያለውን ክፍት ቦታ እንዲይዝ */
+  font-size: 0.75rem;
+  color: #c53030;
+  line-height: 1.3;
+  border-left: 2px solid #feb2b2;
+  padding-left: 8px;
+}
+
+.inline-comment strong, .rejection-comment-box strong {
+  color: #b91c1c;
+}
+
+.edit-btn-compact {
+  flex: 0 0 auto; /* 👈 በተኑ መጠኑ እንዳይቀንስ */
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  transition: 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-btn-compact:hover {
+  background: #dc2626;
+  transform: scale(1.05);
+}
+
+/* --- 🏁 --- */
+
+.status-badge {
+  display: inline-block;
+  margin-top: 0px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.edit-btn {
+  margin-top: 12px;
+  background: #f1f5f9;
+  color: #1e3a8a;
+  border: 1px solid #e2e8f0;
+  padding: 6px;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 600;
+  font-size: 0.8rem;
+  transition: 0.2s;
+}
+
+.edit-btn:hover {
+  background: #1e3a8a;
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .status-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 10px;
+  }
+  
+  .rejection-row {
+    flex-direction: row; /* በሞባይልም ጎን ለጎን እንዲቆይ */
+    align-items: center;
+  }
+  .status-header {
+    text-align: center;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+}
+
+/* ===============================
+    Manager Only Tiny Delete Button
+   =============================== */
+
+.status-card button[style] {
+  align-self: flex-start;
+  transition: all 0.2s ease;
+}
+
+.status-card button[style]:hover {
+  background: #dc2626 !important;
+  transform: scale(1.05);
+}
+
+.status-card button[style]:active {
+  transform: scale(0.95);
+}
+
+/* =========================================
+    🚨 NEW: DELETE BUTTON CONTAINER & STYLE
+   ========================================= */
+
+.manager-delete-container, .delete-wrapper {
+  margin: 10px 0 0 0;
+  text-align: right;
+  padding-top: 0px;
+}
+
+.status-card-delete-btn {
+  background: transparent;
+  color: #ef4444;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+}
+
+.status-card-delete-btn:hover {
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+/* =========================================
+    📱 RESPONSIVE BREAKPOINTS (ADDITION)
+   ========================================= */
+
+@media (max-width: 768px) {
+  .status-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    padding: 5px;
+  }
+  .status-header {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+  }
+  .status-card h4 {
+    font-size: 0.85rem !important;
+    font-weight: 800;
+    white-space: normal;
+  }
+
+  .status-card p {
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .status-card p b {
+    color: #000000;
+    font-size: 0.8rem;
+    font-weight: 800;
+  }
+  .rejection-row {
+    flex-direction: row;
+    gap: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 780px) {
+  .status-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .status-card {
+    padding: 12px;
+  }
+  .inline-comment, .rejection-comment-box {
+    font-size: 0.7rem;
+  }
+}
+
+@media (min-width: 781px) and (max-width: 880px) {
+  .status-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+  .status-header {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 881px) and (max-width: 1024px) {
+  .status-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  .status-container {
+    max-width: 95%;
+  }
+  .status-card h4 {
+    font-size: 1rem !important;
+    font-weight: 800;
+  }
+  .status-card p {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .status-card p b {
+    color: #000000;
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+}
+
+@media (min-width: 1025px) {
+  .status-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .status-card h4 {
+    font-size: 1rem !important;
+    font-weight: 800;
+  }
+  .status-card p {
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+  .status-card p b {
+    color: #000000;
+    font-size: 0.9rem;
+    font-weight: 800;
+  }
+}
+
+/* 🛠️ የፈለጉት አገልግሎት መያዣ (Services Container) */
+.services-section {
+  padding: 5px;
+  background: #f8f9fa; 
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+.section-title {
+  font-weight: 800;
+  color: #d11010;
+  margin-bottom: 1px;
+  display: block;
+}
+
+.service-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 0;
+}
+
+.service-item:last-child {
+  border-bottom: none; 
+}
+
+.service-name {
+  font-size: 0.85rem;
+  color: #064abe;
+  font-weight: 600;
+}
+
+.service-status-badge {
+  padding: 3px 12px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 700;
+  min-width: 90px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .service-item {
+    flex-direction: row; /* አገልግሎቶች ሁልጊዜ ጎን ለጎን ይሁን */
+    align-items: center;
+    gap: 5px;
+  }
+  .service-status-badge {
+    min-width: 80px;
+    font-size: 0.65rem;
+  }
+}
+
+/* =========================================
+    🚨 አዲስ የተጨመሩ (ለአገልግሎት ነጥሎ ማሳያ)
+   ========================================= */
+
+.card-header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.service-item-container {
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+}
+
+.service-item-container.is-rejected {
+  border: 1px solid #fca5a5;
+  background: #fff5f5;
+}
+
+.service-comment-box {
+  margin-top: 5px;
+  padding: 8px;
+  background: white;
+  border: 1px dashed #ef4444;
+  border-radius: 6px;
+  color: #b91c1c;
+  font-size: 0.8rem;
+}
+
+/* የባጅ ቀለሞች በክላስ (JS ውስጥ ለ getStatusClass የሚጠቅሙ) */
+.status-rejected { background-color: #ef4444; }
+.status-assigned { background-color: #3b82f6; }
+.status-received { background-color: #8b5cf6; }
+.status-completed { background-color: #10b981; }
+.status-pending { background-color: #f59e0b; }
+.status-verified { background-color: #059669; }
+
+/* የካርዱ Border Left ቀለሞች */
+.border-rejected { border-left-color: #ef4444; }
+.border-assigned { border-left-color: #3b82f6; }
+.border-received { border-left-color: #8b5cf6; }
+.border-completed { border-left-color: #10b981; }
+.border-pending { border-left-color: #f59e0b; }
+.border-verified { border-left-color: #059669; }
