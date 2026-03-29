@@ -5,18 +5,16 @@ const API = axios.create({
   withCredentials: true
 });
 
-// Request interceptor
+// axiosConfig.js
 API.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
-
-  // ✅ Token only if exists
   if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  } else {
-    delete config.headers.Authorization;
+    // ቀጥታ በ headers object ውስጥ ማስገባት ይሻላል
+    config.headers['Authorization'] = `Bearer ${token}`;
   }
-
   return config;
+}, (error) => {
+  return Promise.reject(error);
 });
 
 export default API;
