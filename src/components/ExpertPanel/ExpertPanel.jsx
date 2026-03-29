@@ -85,7 +85,7 @@ export default function ExpertPanel({
     try {
       // 1. API ጥሪው ሳይመለስ ለአለርት የሚሆን መልእክት ማዘጋጀት
       const response = await axios.patch(
-        `http://localhost:5000/api/files/${endpoint}/${fileId}/${serviceId}`, 
+        `https://akaki-backend-1.onrender.com/files/${endpoint}/${fileId}/${serviceId}`, 
         {}, 
         { withCredentials: true } 
       );
@@ -234,7 +234,7 @@ export default function ExpertPanel({
                     <td><span className="reason-tag">⚠️ {u.reason}</span></td>
                     <td>
                       {(u.attachedFile || u.blockLetter) ? (
-                        <a href={`http://localhost:5000${u.attachedFile || u.blockLetter}`} target="_blank" rel="noreferrer" className="view-link">ክፈት</a>
+                        <a href={`https://akaki-backend-1.onrender.com${u.attachedFile || u.blockLetter}`} target="_blank" rel="noreferrer" className="view-link">ክፈት</a>
                       ) : "-"}
                     </td>
                   </tr>
